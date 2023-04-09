@@ -74,17 +74,19 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   </head>
   <body>
     <GoogleAnalytics trackingId={PUBLIC_GA_TRACKING_ID} />
+
+    <header>
+      {
+        coverImageURL && (
+          <div class="cover">
+            <img src={coverImageURL} />
+          </div>
+        )
+      }
+    </header>
     <div class="container">
       <main>
-        {
-          coverImageURL && (
-            <div class="cover">
-              <img src={coverImageURL} />
-            </div>
-          )
-        }
-
-        <div class="content">
+        <div class="content inner">
           <header>
             <h1>
               <a href={getNavLink('/')}>
@@ -92,28 +94,28 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
                   database.Icon && database.Icon.Type === 'emoji' ? (
                     <>
                       <span>{database.Icon.Emoji}</span>
-                      {database.Title}
+                      <p>{database.Title}</p>
                     </>
                   ) : database.Icon && database.Icon.Type === 'external' ? (
                     <>
                       <img src={database.Icon.Url} />
-                      {database.Title}
+                      <p>{database.Title}</p>
                     </>
                   ) : database.Icon && database.Icon.Type === 'file' ? (
                     <>
                       <img src={customIconURL} class="custom-icon" />
-                      {database.Title}
+                      <p>{database.Title}</p>
                     </>
                   ) : (
-                    database.Title
+                    <p>{database.Title}</p>
                   )
                 }
               </a>
             </h1>
-            <div class="description">
-              {database.Description}
-            </div>
           </header>
+          <div class="description">
+            {database.Description}
+          </div>
 
           <slot name="main" />
 
@@ -142,8 +144,14 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 </html>
 
 <style define:vars={{ asidePaddingTop }}>
+
+  .inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
   .container {
     display: flex;
+    justify-content: center;
     min-height: 100vh;
   }
   @media (max-width: 640px) {
@@ -165,9 +173,8 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 
   aside {
     order: 1;
-    width: 300px;
-    padding: var(--asidePaddingTop) 20px 20px;
-    background-color: #f4f4f4;
+    width: 20%;
+    padding: var(--asidePaddingTop) 40px 40px;
   }
   @media (max-width: 640px) {
     aside {
