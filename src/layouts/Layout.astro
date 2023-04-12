@@ -84,55 +84,58 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
         )
       }
     </header>
-    <div class="container">
-      <main>
-        <div class="content inner">
-          <header>
-            <h1>
-              <a href={getNavLink('/')}>
-                {
-                  database.Icon && database.Icon.Type === 'emoji' ? (
-                    <>
-                      <span>{database.Icon.Emoji}</span>
-                      <p>{database.Title}</p>
-                    </>
-                  ) : database.Icon && database.Icon.Type === 'external' ? (
-                    <>
-                      <img src={database.Icon.Url} />
-                      <p>{database.Title}</p>
-                    </>
-                  ) : database.Icon && database.Icon.Type === 'file' ? (
-                    <>
-                      <img src={customIconURL} class="custom-icon" />
-                      <p>{database.Title}</p>
-                    </>
-                  ) : (
-                    <p>{database.Title}</p>
-                  )
-                }
-              </a>
-            </h1>
-          </header>
-          <div class="description">
-            {database.Description}
-          </div>
+    <div class="bg-wrapper">
 
-          <slot name="main" />
-
-          <footer>
-            <div>
-              <span>Powered by</span>
-              <a href="https://github.com/otoyo/astro-notion-blog"
-                >astro-notion-blog</a
-              >
+      <div class="container">
+        <main>
+          <div class="content inner">
+            <header>
+              <h1 class="title">
+                <a href={getNavLink('/')}>
+                  {
+                    database.Icon && database.Icon.Type === 'emoji' ? (
+                      <>
+                        <span>{database.Icon.Emoji}</span>
+                        <p>{database.Title}</p>
+                      </>
+                    ) : database.Icon && database.Icon.Type === 'external' ? (
+                      <>
+                        <img src={database.Icon.Url} />
+                        <p>{database.Title}</p>
+                      </>
+                    ) : database.Icon && database.Icon.Type === 'file' ? (
+                      <>
+                        <img src={customIconURL} class="custom-icon" />
+                        <p>{database.Title}</p>
+                      </>
+                    ) : (
+                      <p>{database.Title}</p>
+                    )
+                  }
+                </a>
+              </h1>
+            </header>
+            <div class="description">
+              {database.Description}
             </div>
-          </footer>
-        </div>
-      </main>
 
-      <aside>
-        <slot name="aside" />
-      </aside>
+            <slot name="main" />
+
+            <footer>
+              <div>
+                <span>Powered by</span>
+                <a href="https://github.com/otoyo/astro-notion-blog"
+                  >astro-notion-blog</a
+                >
+              </div>
+            </footer>
+          </div>
+        </main>
+  
+        <aside>
+          <slot name="aside" />
+        </aside>
+      </div>
     </div>
 
     {
@@ -144,6 +147,15 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
 </html>
 
 <style define:vars={{ asidePaddingTop }}>
+
+  .title > a > p {
+    font-size: 24px;
+  }
+
+  .bg-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 
   .inner {
     max-width: 1100px;
@@ -195,7 +207,10 @@ const asidePaddingTop = coverImageURL ? '200px' : '60px'
   }
 
   div.content {
+    margin-top: 24px;
+    margin-bottom: 24px;
     padding: 20px 40px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
   @media (max-width: 640px) {
     div.content {

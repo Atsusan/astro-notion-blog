@@ -13,8 +13,9 @@
 }
 
 .post {
-  margin: 0 auto 40px;
+  margin: 0 auto 48px;
 }
+
 .post :global(h3) {
   margin: 0;
   color: var(--fg);
