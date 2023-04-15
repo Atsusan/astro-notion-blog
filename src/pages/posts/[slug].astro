@@ -92,7 +92,6 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
   ogImage = new URL(filePath(new URL(post.FeaturedImage.Url)), Astro.site)
 }
 ---
-
 <Layout
   title={post.Title}
   description={post.Excerpt}
@@ -101,12 +100,13 @@ if (post.FeaturedImage && post.FeaturedImage.Url) {
 >
   <div slot="main" class={styles.main}>
     <div class={styles.post}>
-      <PostDate post={post} />
-      <PostTags post={post} />
+      <div slot="post__flex" class={styles.post__flex}>
+        <PostDate post={post} />
+        <PostTags post={post} />
+      </div>
       <PostTitle post={post} enableLink={false} />
       <PostBody blocks={blocks} />
       <PostTags post={post} />
-
       <footer>
         <PostRelativeLink prevPost={prevPost} nextPost={nextPost} />
       </footer>

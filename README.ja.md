@@ -67,7 +67,7 @@ astro-notion-blog を使えば [Notion](https://www.notion.so) で書けるブ�
 
 11. "Save and Deploy" をクリックし、デプロイが完了すると Notion Blog が見えるようになります
 
-astro-notion-blog では新しい記事や変更を公開したいとき毎回デプロイが必要になります。  
+astro-notion-blog では新しい記事や変更を公開したいとき毎回デプロイが必要になります。
 Cloudflare Pages のダッシュボードから手動でデプロイするか、GitHub Action のような CI を使って定時デプロイしてください。
 
 ## カスタマイズするには
